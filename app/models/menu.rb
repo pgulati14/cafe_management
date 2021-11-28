@@ -1,5 +1,3 @@
-class Menu < ApplicationRecord
-  def to_pleasant_string
-    "#{menu_id}. #{menu_name}"
-  end
+class Menu < ActiveRecord::Base
+  has_many :menu_items, :dependent => :destroy
 end

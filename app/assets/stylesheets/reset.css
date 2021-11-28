@@ -3,7 +3,7 @@
    License: none (public domain)
 */
 
-/*html,
+html,
 body,
 div,
 span,
@@ -97,7 +97,7 @@ body {
   margin-top: 60px;
   margin: 0 auto;
 }
-/* HTML5 display-role reset for older browsers
+
 article,
 aside,
 details,
@@ -142,4 +142,3 @@ table {
 section {
   display: block;
 }
-*/
