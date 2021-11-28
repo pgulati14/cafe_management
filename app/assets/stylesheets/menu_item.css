@@ -1,0 +1,18 @@
+.MenuItem-container {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.MenuItem-name {
+  font-size: 20px;
+  padding-left: 20px;
+  color: blueviolet;
+}
+.MenuItem-price {
+  padding-left: 20px;
+  font-size: 15px;
+  color: darksalmon;
+}
+.MenuItem {
+  padding-top: 20px;
+}

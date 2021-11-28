@@ -5,7 +5,9 @@
         <%=check_box_tag 'menu_item','1',false,class:"MenuItem-checkbox"%>
         <p class="MenuItem-name"><%=item.menu_item_name%></p>
         <p class="MenuItem-price"><%=item.menu_item_price%></p>
+        <%=form_with(url: menu_item_path(item.id), method:"delete") do%>
+          <%=image_submit_tag 'trash-can.svg'%>
+        <%end%>
       </label>
      </li>
   <% end %>
-</section>
