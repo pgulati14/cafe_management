@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CafeteriaManager</title>
+  </head>
+  <body>
+    <% if @current_user %>
+      <p class="User-Header">
+        Welcome <%= @current_user.first_name %>!
+      </p>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
