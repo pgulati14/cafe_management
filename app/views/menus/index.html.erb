@@ -1,6 +1,10 @@
-<section>
+<article>
   <h1 class="MenuPage-title">Menu Types</h1>
-  <%=render partial: "menu-section", locals:{
-     menus: Menu.all
+    <%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
+      <%=text_field_tag 'menu_name',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
+      <%=submit_tag 'Add',class:'AddMenu-button'%>
+    <%end%>
+  <%=render partial: "menu_section", locals:{
+      menus: Menu.all
   }%>
-</section>
+</article>

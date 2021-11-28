@@ -4,10 +4,36 @@ body {
 }
 .MenuPage-title {
   font-size: 48px;
-  line-height: 1.4;
+  line-height: 1.6;
   padding-left: 20px;
+  color :purple
 }
 
+.Menu-container {
+  display: flex;
+}
+.Menu-text {
+  font-size: 24px;
+  line-height: 1.4;
+  padding-left: 20px;
+  color: black;
+}
+.Menu-link {
+  text-decoration: none;
+}
 .MenuItem-container {
   display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+}
+.MenuItem-name {
+  font-size: 30px;
+  padding-left: 20px;
+}
+.MenuItem-price {
+  padding-left: 20px;
+  font-size: 15px;
+}
+.MenuItem {
+  padding-top: 20px;
 }
