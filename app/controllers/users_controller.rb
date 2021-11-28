@@ -13,13 +13,13 @@ class UsersController < ApplicationController
       render "edit"
     end
 
+
     def create
-      Users.create!(
+      User.create!(
         first_name: params[:first_name],
         last_name: params[:last_name],
         email: params[:email],
         password: params[:password],
       )
-      redirect_to "/"
     end
 end
