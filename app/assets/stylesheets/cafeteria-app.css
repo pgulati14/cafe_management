@@ -1,0 +1,13 @@
+body {
+  font-family: sans-serif;
+  line-height: 1;
+}
+.MenuPage-title {
+  font-size: 48px;
+  line-height: 1.4;
+  padding-left: 20px;
+}
+
+.MenuItem-container {
+  display: flex;
+}
