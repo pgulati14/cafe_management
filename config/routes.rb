@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post "/signin" => "sessions#create", as: :sessions
   get "/signin" => "sessions#new", as: :new_sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session
-  get "/cart" => "orders#show_cart", as: :cart_ordersend
+  get "/cart" => "orders#show_cart", as: :cart_orders
+  get "/active" => "menus#active_menus", as: :active_menus
 end

@@ -6,3 +6,13 @@ body {
   .Menu-form {
     display: flex;
   }
+  .Menu-form {
+    display: flex;
+  }
+  .Menu-checkbox {
+    width: 16px;
+    height: 16px;
+    background: #bff03a;
+    border: 1px solid #4bec89;
+    border-radius: 4px;
+  }
