@@ -1,42 +1,54 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.placed_orders(@current_user.id)
+    render "index"
+  end
+
+  def show
+    @orders = Order.where(id: params[:id])
+  end
+
   def create
-    item_ids = params[:item_ids]
-    clean_item_ids = item_ids - [nil]
-    place_order = placing_an_order?
-    add_to_cart = adding_to_cart?
-    Order.create_order_and_order_items(current_user.id, clean_item_ids, place_order, add_to_cart)
-    redirect_to menus_path
+    @current_order.update!(total_price: params[:total_price].to_f,
+                           status: "placed", ordered_at: DateTime.now)
+    redirect_to order_path(@current_order.id)
   end
 
   def update
     id = params[:id]
     order = Order.find(id)
     order.delivered_at = DateTime.now
-    order.order_delivered = true
+    order.status = "delivered"
     order.save!
-    redirect_to orders_path
+    redirect_to pending_orders_path
   end
 
-  def placing_an_order?
-    params[:commit] == "Place Order"
-  end
-
-  def adding_to_cart?
-    params[:commit] == "Add to Cart"
-  end
-
-  def show_cart
-    @orders = Order.cart_items(current_user.orders)
-    render "cart.html.erb"
-  end
-
-  def cart_to_order
-    order_ids = params[:order_ids]
-    clean_order_ids = order_ids - [nil]
-    if clean_order_ids.length() != 0
-      Order.cart_order(clean_order_ids)
-      @orders = Order.cart_items(current_user.orders)
+  def cart
+    order_item = OrderItem.exist?(@current_user.id, @current_order.id, params[:menu_item_id])
+    if order_item
+      updated_quantity = order_item.quantity + params[:quantity].to_i
+      order_item.update!(quantity: updated_quantity,
+                         price: updated_quantity * params[:item_price].to_f)
+    else
+      order_item = OrderItem.new(
+        order_id: @current_order.id,
+        menu_item_id: params[:menu_item_id],
+        menu_item_name: params[:item_name],
+        menu_item_price: params[:item_price],
+        quantity: params[:quantity],
+        price: params[:quantity].to_f * params[:item_price].to_f,
+      )
+      if (order_item.save)
+        # do nothing
+      else
+        flash[:error] = order_item.errors.full_messages.join(",")
+      end
     end
-    redirect_to show_cart_path
+    redirect_to menu_path(params[:menu_id])
+  end
+
+  def pending
+    @orders = Order.pending_orders?
+    render "pending"
   end
 end

@@ -1,5 +1,7 @@
 class Menu < ActiveRecord::Base
-  has_many :menu_items, :dependent => :destroy
+  validates :menu_name, presence: true
+  validates :menu_name, length: { minimum: 2 }
+
   def self.active
     all.where(active: true)
   end

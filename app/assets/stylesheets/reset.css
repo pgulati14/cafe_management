@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/
+ /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -91,13 +91,8 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-body {
-  font-family: sans-serif;
-  line-height: 1;
-  margin-top: 60px;
-  margin: 0 auto;
-}
 
+/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -117,8 +112,7 @@ body {
 }
 
 ol,
-ul,
-li {
+ul {
   list-style: none;
 }
 
@@ -131,14 +125,11 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-section {
-  display: block;
 }

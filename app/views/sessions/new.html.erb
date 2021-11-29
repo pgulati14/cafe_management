@@ -1,18 +1,26 @@
-<p class =NewUsers-title> Sign In!! </p>
-
+<section class="User-login">
+<div class="login-card">
   <section class="UsersNew">
+    <p class="NewUsers-title">Welcome!</p>
     <%= form_with url: sessions_path do |form| %>
-
       <div class="Form-section">
-         <p class="FormInput-label" > Email: </p>
-         <%= form.email_field :email, class: "Form-input" %>
+        <p class="FormInput-label">email:</p>
+        <%= form.email_field :email, class: "Form-input" %>
       </div>
       <div class="Form-section">
-         <p class="FormInput-label" > Password: </p>
-         <%= form.password_field :password, class: "Form-input" %>
+        <p class="FormInput-label">password:</p>
+        <%= form.password_field :password, class: "Form-input" %>
       </div>
       <div class="Form-section">
-         <%= form.submit "Sign-In!", class: "Form-submit" %>
+        <%= form.submit "SIGN IN", class: "Form-submit" %>
       </div>
     <% end %>
   </section>
+  <div class="login-card-img">
+    <h1>New here?</h1>
+    <p style="text-align:center;margin-top:5%;"><b>Serving HoT!</b></p>
+    <p style="text-align:center;margin-top:70%"> <%= link_to "SIGN UP", new_user_path, class: "Sign-up-button" %>
+    </p>
+  </div>
+</div>
+<section>

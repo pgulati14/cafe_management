@@ -1,6 +1,5 @@
 class MenusController < ApplicationController
   def index
-    #render plain: Menu.all.map { |menu| menu.to_pleasant_string }.join("\n")
     @current_user = current_user
     @menus = Menu.active
     render "index"
@@ -11,44 +10,54 @@ class MenusController < ApplicationController
   end
 
   def show
-    @current_user = current_user
+    if @current_user == nil
+      @current_user = current_user
+    end
     render "show"
-    #id = params[:id]
-    #menu_items = MenuItem.where("menu_id=?", id)
-    #render plain: menu_items.all.map { |menu_item| menu_item.to_pleasant_string }.join("\n")
   end
 
   def create
-    # id = params[:menu_id]
-    name = params[:menu_name]
-    Menu.create!(
-      menu_name: name,
-    )
-    redirect_to menus_path
+    name = params[:name]
+    new_menu = Menu.new(name: name, active: false)
+    if new_menu.save
+      redirect_to new_menu_path
+    else
+      flash[:error] = new_menu.errors.full_messages.join(",")
+      redirect_to new_menu_path
+    end
   end
 
   def destroy
     id = params[:id]
     Menu.find(id).destroy
-    #redirect_to menus_path
     redirect_to new_menu_path
   end
 
   def edit
-    @id = params[:id]
-    render "edit"
+    id = params[:id]
+    session[:edit_menu_id] = id
+    redirect_to new_menu_path
   end
 
   def update
     id = params[:id]
     menu = Menu.find(id)
-    menu.active = params[:active]
-    p params[:active]
-    menu.save!
-    redirect_to active_menus_path
+    menu.active = !menu.active
+    if menu.save
+      redirect_to new_menu_path
+    end
   end
 
-  def active_menus
-    render "active"
+  def edit_menu_details
+    id = params[:id]
+    new_name = params[:name]
+    menu = Menu.find(id)
+    menu.name = new_name
+    if menu.save
+      session[:edit_menu_id] = -1
+    else
+      flash[:error] = menu.errors.full_messages.join(",")
+    end
+    redirect_to new_menu_path
   end
 end

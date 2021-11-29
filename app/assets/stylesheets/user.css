@@ -1,0 +1,79 @@
+.User-login {
+  background-color: lightsteelblue;
+  height: 100%;
+}
+.NewUsers-title {
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+.Form-section {
+  margin-bottom: 30px;
+}
+.Form-input {
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  outline: none;
+  outline-style: none;
+  padding: 8px;
+}
+.Form-input:focus {
+  border-bottom: 1px solid rgb(23, 56, 163);
+}
+.FormInput-label {
+  color: #555555;
+  margin-bottom: 8px;
+}
+.Form-submit {
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+  padding-right: 90px;
+  padding-left: 90px;
+  background-color: #0b919b;
+  border: 1px solid #0c8e92;
+  border-radius: 8px;
+}
+.Form-submit:hover {
+  cursor: pointer;
+}
+
+.UsersNew {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+.Sign-up-button {
+  text-decoration: none;
+  color: white;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: small;
+}
+.Edit-user {
+  background-color: white;
+  font-size: larger;
+  width: fit-content;
+  padding: 20px 100px;
+  margin: auto;
+  position: relative;
+  top: 22%;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.Edit-user:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.Edit-user-content {
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+  margin: 15px;
+}
+.Edit-user-content p {
+  text-align: center;
+  padding: 10px;
+}
