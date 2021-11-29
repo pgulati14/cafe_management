@@ -4,7 +4,7 @@
       <li>
         <div class="MenuItem-container">
           <%= form.check_box :item_ids, { multiple: true, id: "item-#{item.id}" }, item.id, nil %>
-          <label for="<%= "item-#{item.id}" %>"><%= item.menu_item_name %> </label>
+          <p><%= item.menu_item_name %></p>
           <p class="MenuItem-price"> <%= item.menu_item_price %> </p>
         </div>
       </li>

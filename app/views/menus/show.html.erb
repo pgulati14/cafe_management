@@ -1,4 +1,4 @@
-<% if @current_user == "owner" %>
+<% if @current_user.role == "owner" %>
 <article>
    <%= form_with(url: menu_items_path, method: "post", class: "AddMenuItem") do %>
     <%= hidden_field_tag "menu_id", params[:id] %>
