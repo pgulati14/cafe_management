@@ -1,25 +1,23 @@
 class UsersController < ApplicationController
-  skip_before_action :ensure_user_logged_in, :only => [:create, :new]
-    def new
-      render "users/new"
-    end
+  skip_before_action :ensure_user_logged_in
 
-    def show
-      @user = User.find(params[:id])
-      render "show"
-    end
+  def new
+    render "users/new"
+  end
 
-    def edit
-      render "edit"
-    end
+  def create
+    new_user = User.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      password_digest: params[:password_digest],
 
+    )
+    redirect_to "/"
+  end
 
-    def create
-      User.create!(
-        first_name: params[:first_name],
-        last_name: params[:last_name],
-        email: params[:email],
-        password: params[:password],
-      )
-    end
+  def show
+    @user = User.find(params[:id])
+    render "show"
+  end
 end
