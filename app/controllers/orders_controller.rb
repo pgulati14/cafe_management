@@ -2,17 +2,30 @@ class OrdersController < ApplicationController
   def create
     item_ids = params[:item_ids]
     clean_item_ids = item_ids - [nil]
-    new_order = Order.create!(
-      user_id: current_user.id,
-      date: DateTime.now,
-    )
-    id = new_order.id
-    clean_item_ids.each { |menu_item_id|
-      OrderItem.create!(order_id: id,
-                        menu_item_id: menu_item_id,
-                        menu_item_name: MenuItem.find(menu_item_id).menu_item_name,
-                        menu_item_price: MenuItem.find(menu_item_id).menu_item_price)
-    }
+    place_order = placing_an_order?
+    add_to_cart = adding_to_cart?
+    Order.create_order_and_order_items(current_user.id, clean_item_ids, place_order, add_to_cart)
     redirect_to menus_path
   end
-end
+  def update
+    id = params[:id]
+    order = Order.find(id)
+    order.delivered_at = DateTime.now
+    order.order_delivered = true
+    order.save!
+    redirect_to orders_path
+  end
+
+  def placing_an_order?
+    params[:commit] == "Place Order"
+  end
+
+  def adding_to_cart?
+    params[:commit] == "Add to Cart"
+  end
+
+  def show_cart
+    @orders = Order.cart_items
+    render "cart.html.erb"
+  end
+endend

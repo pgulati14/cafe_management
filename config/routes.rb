@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :order_items
-
   post "/signin" => "sessions#create", as: :sessions
   get "/signin" => "sessions#new", as: :new_sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session
+  get "/cart" => "orders#show_cart", as: :cart_ordersend
 end

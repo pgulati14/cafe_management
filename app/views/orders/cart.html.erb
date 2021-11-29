@@ -1,8 +1,8 @@
 <section>
-  <p>Orders to be Delivered</p>
+  <p>My Cart</p>
   <% @orders.all.each do |order| %>
     <li class="Orders">
-        <label class="Orders-container">
+      <label class="Orders-container">
         <%= form_with(url: order_path(order.id), method: "put") do %>
           <%= check_box_tag "delivered", "1", checked = false, onclick: "this.form.submit()" %>
         <% end %>
